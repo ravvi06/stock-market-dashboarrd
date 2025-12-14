@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stock Market Analysis</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="layout">
+    <section class="chart-panel">
+      <div class="chart-wrapper">
+        <canvas id="stockChart" height="420"></canvas>
+        <div class="chart-meta">
+          <div id="chart-info" class="chart-info"></div>
+          <div id="peak-low" class="peak-low"></div>
+        </div>
+        <div class="chart-controls">
+          <button data-range="1m" class="range-btn active">1 Month</button>
+          <button data-range="3m" class="range-btn">3 Month</button>
+          <button data-range="1y" class="range-btn">1 Year</button>
+          <button data-range="5y" class="range-btn">5 Years</button>
+        </div>
+      </div>
+
+      <div id="company-summary" class="company-summary"></div>
+    </section>
+
+    <aside class="list-panel">
+      <h2 class="section-title">Portfolio</h2>
+      <ul id="stock-list" class="stock-list"></ul>
+      <div id="last-updated" class="last-updated"></div>
+    </aside>
+
+    <aside class="detail-panel">
+      <h2 class="section-title">Details</h2>
+      <div id="details" class="details">
+        <p class="muted-text">Select a stock to view details</p>
+      </div>
+    </aside>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="chart.js"></script>
+  <script src="api.js"></script>
+  <script src="list.js"></script>
+  <script src="detail.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>

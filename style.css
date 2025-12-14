@@ -1,0 +1,247 @@
+:root {
+  --bg: #0e1222;
+  --panel: #0e1222;
+  /* Blends with bg in target */
+  --chart-bg: #111827;
+  --accent: #34d399;
+  --danger: #f87171;
+  --text: #e5e7eb;
+  --muted: #6b7280;
+  --border: #1f2937;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  overflow-y: auto;
+  /* Changed from hidden to auto */
+}
+
+/* Main Layout: 3 Columns */
+.layout {
+  display: grid;
+  grid-template-columns: 3.5fr 1fr 0.8fr;
+  gap: 20px;
+  padding: 20px;
+  height: auto;
+  /* Changed from 100vh to auto */
+  overflow: visible;
+  /* Let content spill out naturally */
+}
+
+/* Panels */
+.list-panel,
+.detail-panel {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.chart-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  /* Disable the middle-screen scrollbar */
+  height: auto;
+  /* Allow panel to grow with the summary text */
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+/* Chart Section */
+.chart-wrapper {
+  background: var(--chart-bg);
+  border-radius: 12px;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+#stockChart {
+  flex-grow: 1;
+  max-height: 85%;
+}
+
+.chart-controls {
+  display: flex;
+  justify-content: flex-end;
+  /* Buttons to right/center */
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.range-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.range-btn:hover {
+  background: #1f2937;
+  color: #fff;
+}
+
+.range-btn.active {
+  background: #1f2937;
+  color: #fff;
+  border-color: #374151;
+}
+
+.chart-meta {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  pointer-events: none;
+}
+
+.peak-low {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Portfolio List */
+.stock-list {
+  list-style: none;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.stock-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  padding: 12px 0;
+  border-bottom: 1px solid #1f2937;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.stock-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.stock-item.selected {
+  /* Optional: highlight selected item subtly if desired */
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.list-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.symbol-text {
+  font-weight: 600;
+  color: #fff;
+  font-size: 14px;
+  width: 50px;
+  /* Align columns */
+}
+
+.price-text {
+  color: #e5e7eb;
+  font-size: 14px;
+}
+
+.change-text {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pos {
+  color: var(--accent);
+}
+
+.neg {
+  color: var(--danger);
+}
+
+/* Details Panel */
+.details h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.detail-row {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #d1d5db;
+}
+
+.detail-label {
+  color: var(--muted);
+  font-weight: 500;
+  display: block;
+  font-size: 12px;
+}
+
+.detail-value {
+  font-size: 15px;
+}
+
+.profit-val {
+  font-weight: 600;
+}
+
+.last-updated {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .layout {
+    grid-template-columns: 1fr;
+    height: auto;
+    overflow: visible;
+  }
+
+  .chart-wrapper {
+    min-height: 400px;
+  }
+}
+
+/* Add this to the bottom of style.css */
+
+.company-summary {
+  margin-top: 20px;
+  /* Space between chart and text */
+  color: #e5e7eb;
+  /* Bright text color (matches the screenshot) */
+  font-size: 14px;
+  /* Readable size */
+  line-height: 1.6;
+  /* Good spacing between lines */
+  width: 100%;
+  /* Spans the full width of the column */
+  height: auto;
+  /* Allows the box to expand to fit all text */
+  overflow: visible;
+  /* Prevents internal scrollbars */
+}
